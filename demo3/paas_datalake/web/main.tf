@@ -45,26 +45,26 @@ resource "azurerm_app_service" "m_apps_webapp" {
    tags = "${var.tags}"
 }
 
-resource "azurerm_web_application_firewall_policy" "waf" {
-  name                = "${var.webapp_name}-waf"
-  location            = "${var.location}"
-  resource_group_name = "${var.resource_group}"
+# resource "azurerm_web_application_firewall_policy" "waf" {
+#   name                = "${var.webapp_name}-waf"
+#   location            = "${var.location}"
+#   resource_group_name = "${var.resource_group}"
 
-  custom_rules {
-    name      = "Rule1"
-    priority  = 1
-    rule_type = "MatchRule"
+#   custom_rules {
+#     name      = "Rule1"
+#     priority  = 1
+#     rule_type = "MatchRule"
 
-    match_conditions {
-      match_variables {
-        variable_name = "RemoteAddr"
-      }
+#     match_conditions {
+#       match_variables {
+#         variable_name = "RemoteAddr"
+#       }
 
-      operator           = "IPMatch"
-      negation_condition = false
-      match_values       = ["192.168.1.0/24", "10.0.0.0/24"]
-    }
+#       operator           = "IPMatch"
+#       negation_condition = false
+#       match_values       = ["192.168.1.0/24", "10.0.0.0/24"]
+#     }
 
-    action = "Block"
-  }
-}
+#     action = "Block"
+#   }
+# }
